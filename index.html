@@ -1,398 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PunchPoint Monitoring System</title>
+    <title>Document</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
     />
-    <link rel="icon" type="image/png" href="./static/images/lnt logo.png" />
     <style>
-      /* Global styles */
       body {
-        margin: 0;
-        font-family: Poppins, Helvetica, sans-serif;
-        font-weight: bold; /* Apply bold font-weight */
-      }
- 
-      .navbar {
         background-color: #1c3f60;
-        color: white;
-        padding: 3vh;
-        display: flex;
-        align-items: center;
-        position: relative;
-      }
- 
-      .navbar h2 {
         margin: 0;
-        flex-grow: 1;
-        text-align: center;
-        font-size: 3vh;
-        margin-left: 13vw;
+        padding: 0;
+        font-family: Poppins, Helvetica, sans-serif;
+
+        height: 100vh; /* Full height of the viewport */
+        display: flex;
+        flex-direction: column; /* Ensure content is stacked vertically */
+        justify-content: space-between; /* Space between content and footer */
       }
- 
-      .navbar i {
-        font-size: 2.8vh;
-        cursor: pointer;
-        color: white;
-        transition: color 0.3s ease;
-        padding: 0.5vh;
+      .outer-container {
+        display: flex;
+        justify-content: center; /* Center the container horizontally */
+        align-items: center; /* Center the container vertically */
+        flex-grow: 1; /* Allow container to take remaining space */
+        width: 100%;
       }
- 
-      .navbar i:hover {
-        color: #4275a5;
-      }
- 
-      .navbar img {
-        height: 5vw;
-        width: auto;
-        margin-top: -3vh;
-        margin-bottom: -3vh;
-      }
- 
-      .login-user {
-        font-size: 1.6vh;
-        position: absolute;
-        right: 3vh;
-        top: 10vh;
-      }
-      .user-logo {
-        height: 2.7vh;
-        width: 4vh;
-        position: absolute;
-        top: 12vh;
-        right: 14vh;
-      }
-      /* Main Content */
+
+      /* Container to arrange the content and gif side by side */
       .container {
-        max-width: 80vw;
-        margin: 4rem auto;
-        padding: 2vh;
- 
-        border-radius: 8px;
- 
+        display: flex;
+        flex-direction: row; /* By default, display content and gif side by side */
+        /* justify-content: space-between;  Spread them apart */
+        justify-content: center;
+        align-items: center; /* Align vertically in the center */
+        /*  height: 80vh; 
+        width: 80%; */
+        width: 100%;
+      }
+
+      .content {
+        color: white;
+        text-align: center;
+        /* Ensure content doesn't take too much space */
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center; /* Center content vertically and horizontally */
-        text-align: center; /* Center the text */
-      }
- 
-      /*  h1 {
-        color: #1c3f60;
-        font-size: 2vw;
-        font-weight: bold;
-        margin-bottom: 3vw;
-      }*/
- 
-      /* Domain Cards */
-      .domain-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-        justify-content: center;
-        margin-top: 2vh;
-      }
- 
-      .domain-card {
-        background-color: #1c3f60; /* Default background color */
-        border-radius: 12px;
-        padding: 3.2vh;
-        width: 13vw;
-        text-align: center;
-        box-shadow: 0 6px 15px rgba(28, 63, 96, 0.5);
-        cursor: pointer;
-        display: flex;
-        flex-direction: column; /* Stack the items vertically */
-        justify-content: flex-start; /* Align children at the top */
         align-items: center;
-        height: 27vh;
-        color: white; /* Text color */
-        position: relative; /* To position the icon inside the card */
-        overflow: hidden; /* Hide the icon when it moves outside the card */
-        margin-top: 14vh;
+        /* Allow content to take up space */
+        margin-left: 12vw;
       }
- 
-      .domain-card h3 {
-        font-size: 2.4vh;
-        color: white;
-        margin-top: 9vh; /* Add margin to the top of the text */
- 
-        text-transform: uppercase;
+
+      .content img {
+        height: 15vh;
+      }
+
+      .content h2 {
+        font-size: 3.5vh;
+      }
+
+      .content p {
+        font-size: 2.6vh;
+      }
+      /* Button styling */
+      /* Button styling */
+      .btn-container {
+        margin-top: 20px; /* Place button below the content */
+        text-align: center; /* Center align the button */
+      }
+
+      button {
+        background-color: white;
+        color: #1c3f60;
+        border: none;
+        border-radius: 3vh;
+        padding: 1.5vh 5.5vh;
+        font-size: 2.5vh;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 1.5vh;
         font-weight: bold;
-        letter-spacing: 1px;
       }
- 
-      .domain-card p {
-        font-size: 1.8vh;
-        color: rgba(255, 255, 255, 0.8);
-        margin-top: 0.8vh; /* Space between text elements */
+
+      button:hover {
+        background-color: #2980b9;
+        color: white;
       }
- 
-      .domain-card i {
-        font-size: 5vh;
-        margin-bottom: 1rem;
+
+      .gif {
+        width: 90vh;
+      }
+      .gif img {
+        height: auto; /* Adjust the gif size */
+        width: 100%;
+      }
+      /* Footer styles */
+      /* footer {
+        color: white;
+        text-align: center;
+
+        width: 100%;
         position: absolute;
-        top: 4vh; /* Position at the top */
-        transition: transform 0.3s ease, color 0.3s ease;
-        animation: moveRight 5s infinite linear; /* Continuous animation */
-        padding: 0 20px;
-      }
- 
-      /* Keyframe animation to move the icon */
-      /*  @keyframes moveRight {
-        0% {
-          left: 0;
-        }
-        50% {
-          left: 70%;
-        }
-        100% {
-          left: 0;
-        }
+        bottom: 0;
       }*/
       footer {
-        color: #1c3f60;
+        background-color: #1c3f60;
+        color: white;
         text-align: center;
-        position: fixed;
-        bottom: 1em;
-        left: 0;
-        right: 0;
-        font-size: 2vh;
+        font-size: 2.2vh;
         font-style: italic;
-        padding: 1vh 0;
+        /*   padding-bottom: 2.8vh; so that scroll bar on the main page is gone*/
+
+        /* bottom: 0;  */
+        padding: 10px 0;
+
+        width: 100%;
       }
- 
-      /* Hover Effects */
-      .domain-card:hover {
-        box-shadow: 0 12px 30px rgba(28, 63, 96, 0.7); /* Shadow effect remains the same */
-      }
- 
-      .domain-card:hover i {
-        color: white; /* Icon color stays white */
-        animation-play-state: running; /* Pause the animation on hover */
-      }
- 
-      /*for mobile extra small screens*/
+
+      /* Media query for max-width 576px */
+
       @media (max-width: 576px) {
-        .navbar h2 {
-          font-size: 2.8vh;
+        /* Ensure no excessive margins or paddings */
+        body,
+        html {
+          margin: 0;
+          padding: 0;
+          overflow: hidden; /* Prevent body scrolling */
+          height: 100vh;
         }
-        .navbar img {
-          height: 7vh;
+
+        .container {
+          display: flex;
+          flex-direction: column; /* Stack content and gif vertically */
+          text-align: center; /* Center align text for smaller screens */
+          margin: 0;
+          padding: 0;
+          height: 100%; /* Ensure full height without overflow */
+          overflow: hidden; /* Prevent scrolling */
         }
-        .navbar i {
-          font-size: 2.5vh;
+
+        .content {
+          width: 90%;
+          max-width: 100%; /* Ensure content takes full width */
+          margin: 0; /* Remove margin */
+          padding: 0; /* Remove padding */
+          flex-grow: 1; /* Ensure content takes available space */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
-        .user-name {
-          margin-bottom: -1.5vh;
+
+        .content img {
+          /* Adjust the image size for medium screens */
+          max-width: 100%; /* Ensure image does not overflow */
+          margin-bottom: -2vh;
+          margin-top: 2vh;
         }
- 
-        .domain-card {
-          width: 35vw;
-          height: 27vh;
-          margin-top: 10vh;
-          margin-top: -2.5vh;
+
+        .content h2 {
+          /* Adjust heading size for medium screens */
+          font-size: 6vw;
+          margin-bottom: 0vw;
         }
- 
-        .domain-card i {
-          font-size: 5vh;
-          margin-bottom: 1rem;
-          position: absolute;
-          top: 4vh; /* Position at the top */
-          transition: transform 0.3s ease, color 0.3s ease;
-          animation: moveRight 5s infinite linear; /* Continuous animation */
-          padding: 0 20px;
+
+        .content p {
+          /* Adjust text size for medium screens */
+          font-size: 5vw;
+          margin-bottom: 2vh; /* Adjust space between paragraph and button */
+        }
+
+        .gif {
+          margin-top: -12vh;
+          margin-bottom: -6vh;
+          width: 70vh; /* Adjust width of the gif container for medium screens */
+        }
+
+        .gif img {
+          height: auto; /* Keep gif responsive */
+          width: 100%; /* Ensure gif doesn't overflow */
+        }
+
+        .btn-container {
+          order: 2; /* Place button after the GIF */
+          margin-top: 1vh; /* Small space between gif and button */
+        }
+
+        footer {
+          /* Adjust footer font size for medium screens */
+          margin-bottom: 16vh; /* Adjust footer positioning */
+          padding: 10px 10vw; /* Adjust padding for footer */
+          width: 80%;
+          position: relative;
+          font-size: 3.8vw;
+        }
+
+        button {
+          margin-top: 0vh; /* Remove top margin from button */
+          padding: 1.5vh 5vh; /* Adjust padding of the button */
         }
       }
- 
-      /*for small screens*/
+      /*for small screen*/
       @media (min-width: 577px) and (max-width: 768px) {
-        .navbar h2 {
-          font-size: 2.8vh;
+        /* Ensure no excessive margins or paddings */
+        body,
+        html {
+          margin: 0;
+          padding: 0;
+          overflow: hidden; /* Prevent body scrolling */
+          height: 100vh;
         }
-        .navbar img {
-          height: 7vh;
+
+        .container {
+          display: flex;
+          flex-direction: column; /* Stack content and gif vertically */
+          text-align: center; /* Center align text for smaller screens */
+          margin: 0;
+          padding: 0;
+          height: 100%; /* Ensure full height without overflow */
+          overflow: hidden; /* Prevent scrolling */
         }
-        .navbar i {
-          font-size: 2.5vh;
+
+        .content {
+          width: 90%;
+          max-width: 100%; /* Ensure content takes full width */
+          margin: 0; /* Remove margin */
+          padding: 0; /* Remove padding */
+          flex-grow: 1; /* Ensure content takes available space */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
- 
-        .domain-card {
-          width: 32vw;
-          height: 27vh;
-          margin-top: 10vh;
-          margin-top: -2.5vh;
+
+        .content img {
+          /* Adjust the image size for medium screens */
+          max-width: 100%; /* Ensure image does not overflow */
+          margin-bottom: -2vh;
+          margin-top: -1vh;
         }
- 
-        .domain-card i {
-          font-size: 5vh;
-          margin-bottom: 1rem;
-          position: absolute;
-          top: 4vh; /* Position at the top */
-          transition: transform 0.3s ease, color 0.3s ease;
-          animation: moveRight 5s infinite linear; /* Continuous animation */
-          padding: 0 20px;
+
+        .content h2 {
+          /* Adjust heading size for medium screens */
+          margin-bottom: 0vw;
+        }
+
+        .content p {
+          /* Adjust text size for medium screens */
+          margin-bottom: 2vh; /* Adjust space between paragraph and button */
+        }
+
+        .gif {
+          margin-top: -12vh;
+          margin-bottom: -6vh;
+          width: 90vh; /* Adjust width of the gif container for medium screens */
+        }
+
+        .gif img {
+          height: auto; /* Keep gif responsive */
+          width: 100%; /* Ensure gif doesn't overflow */
+        }
+
+        .btn-container {
+          order: 2; /* Place button after the GIF */
+          margin-top: 1vh; /* Small space between gif and button */
+        }
+
+        footer {
+          /* Adjust footer font size for medium screens */
+          margin-bottom: 16vh; /* Adjust footer positioning */
+          padding: 10px 10vw; /* Adjust padding for footer */
+          width: 80%;
+          position: relative;
+        }
+
+        button {
+          margin-top: 0vh; /* Remove top margin from button */
+          padding: 1.5vh 5vh; /* Adjust padding of the button */
         }
       }
-      /*for medium screens*/
+      /*for medium screen*/
       @media (min-width: 769px) and (max-width: 1024px) {
-        .navbar h2 {
-          font-size: 2.8vh;
+        /* Ensure no excessive margins or paddings */
+        body,
+        html {
+          margin: 0;
+          padding: 0;
+          overflow: hidden; /* Prevent body scrolling */
+          height: 100vh;
         }
-        .navbar img {
-          height: 7vh;
+
+        .container {
+          display: flex;
+          flex-direction: column; /* Stack content and gif vertically */
+          text-align: center; /* Center align text for smaller screens */
+          margin: 0;
+          padding: 0;
+          height: 100%; /* Ensure full height without overflow */
+          overflow: hidden; /* Prevent scrolling */
         }
-        .navbar i {
-          font-size: 2.5vh;
+
+        .content {
+          width: 90%;
+          max-width: 100%; /* Ensure content takes full width */
+          margin: 0; /* Remove margin */
+          padding: 0; /* Remove padding */
+          flex-grow: 1; /* Ensure content takes available space */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
- 
-        .domain-card {
-          width: 21vw;
-          height: 27vh;
-          margin-top: 13vh;
+
+        .content img {
+          height: 15vh; /* Adjust the image size for medium screens */
+          max-width: 100%; /* Ensure image does not overflow */
+          margin-bottom: 0vh;
+          margin-top: 4vh;
         }
- 
-        .domain-card i {
-          font-size: 5vh;
-          margin-bottom: 1rem;
-          position: absolute;
-          top: 4vh; /* Position at the top */
-          transition: transform 0.3s ease, color 0.3s ease;
-          animation: moveRight 5s infinite linear; /* Continuous animation */
-          padding: 0 20px;
+
+        .content h2 {
+          font-size: 3.5vh; /* Adjust heading size for medium screens */
+          margin-bottom: 0vh;
+        }
+
+        .content p {
+          font-size: 2.5vh; /* Adjust text size for medium screens */
+          margin-bottom: 4vh; /* Adjust space between paragraph and button */
+        }
+
+        .gif {
+          margin-top: -10vh;
+          margin-bottom: 0vh;
+          width: 80vh; /* Adjust width of the gif container for medium screens */
+        }
+
+        .gif img {
+          height: auto; /* Keep gif responsive */
+          width: 100%; /* Ensure gif doesn't overflow */
+        }
+
+        .btn-container {
+          order: 2; /* Place button after the GIF */
+          margin-top: 0vh; /* Small space between gif and button */
+          margin-bottom: 0vh;
+        }
+
+        footer {
+          margin-top: -8vh;
+          font-size: 2vh; /* Adjust footer font size for medium screens */
+          margin-bottom: 20vh;
+          padding: 10px 0vw; /* Adjust padding for footer */
+
+          position: relative;
+        }
+
+        button {
+          margin-top: 0vh; /* Remove top margin from button */
+          /* Adjust padding of the button */
         }
       }
-      /*for large screens*/
+      /*large screen*/
       @media (min-width: 1025px) and (max-width: 1440px) {
-        .navbar h2 {
-          font-size: 2.8vh;
+        .content img {
+          height: 15vh;
         }
-        .navbar img {
-          height: 7vh;
+
+        .content h2 {
+          font-size: 3.5vh;
         }
-        .navbar i {
+
+        .content p {
+          font-size: 2.6vh;
+        }
+        /* Button styling */
+        /* Button styling */
+        .btn-container {
+          margin-top: 20px; /* Place button below the content */
+          text-align: center; /* Center align the button */
+        }
+
+        button {
+          background-color: white;
+          color: #1c3f60;
+          border: none;
+          border-radius: 3vh;
+          padding: 1.5vh 5.5vh;
           font-size: 2.5vh;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          margin-top: 1.5vh;
+          font-weight: bold;
         }
- 
-        .domain-card {
-          width: 16vw;
-          height: 27vh;
-          margin-top: 13vh;
+
+        button:hover {
+          background-color: #2980b9;
+          color: white;
         }
- 
-        .domain-card i {
-          font-size: 5vh;
-          margin-bottom: 1rem;
+
+        .gif {
+          width: 100vh; /* Adjust width of the gif container for medium screens */
+        }
+
+        .gif img {
+          height: auto; /* Keep gif responsive */
+          width: 100%; /* Ensure gif doesn't overflow */
+        }
+        /* Footer styles */
+        /* footer {
+          color: white;
+          text-align: center;
+  
+          width: 100%;
           position: absolute;
-          top: 4vh; /* Position at the top */
-          transition: transform 0.3s ease, color 0.3s ease;
-          animation: moveRight 5s infinite linear; /* Continuous animation */
-          padding: 0 20px;
+          bottom: 0;
+        }*/
+        footer {
+          text-align: center;
+          font-size: 2.2vh;
         }
       }
+
+      /*extra large screen*/
       @media (min-width: 1441px) {
-        .navbar h2 {
-          font-size: 2.8vh;
+        body {
+          background-color: #1c3f60;
+          margin: 0;
+          padding: 0;
+          font-family: Poppins, Helvetica, sans-serif;
+
+          height: 100vh; /* Full height of the viewport */
+          display: flex;
+          flex-direction: column; /* Ensure content is stacked vertically */
+          justify-content: space-between; /* Space between content and footer */
         }
-        .navbar img {
-          height: 7vh;
+        .outer-container {
+          display: flex;
+          justify-content: center; /* Center the container horizontally */
+          align-items: center; /* Center the container vertically */
+          flex-grow: 1; /* Allow container to take remaining space */
+          width: 100%;
         }
-        .navbar i {
+
+        /* Container to arrange the content and gif side by side */
+        .container {
+          display: flex;
+          flex-direction: row; /* By default, display content and gif side by side */
+          /* justify-content: space-between;  Spread them apart */
+          justify-content: center;
+          align-items: center; /* Align vertically in the center */
+          /*  height: 80vh; 
+          width: 80%; */
+          width: 100%;
+        }
+
+        .content {
+          color: white;
+          text-align: center;
+          /* Ensure content doesn't take too much space */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          /* Allow content to take up space */
+          margin-left: 12vw;
+        }
+
+        .content img {
+          height: 15vh;
+        }
+
+        .content h2 {
+          font-size: 3.5vh;
+        }
+
+        .content p {
+          font-size: 2.6vh;
+        }
+        /* Button styling */
+        /* Button styling */
+        .btn-container {
+          margin-top: 20px; /* Place button below the content */
+          text-align: center; /* Center align the button */
+        }
+
+        button {
+          background-color: white;
+          color: #1c3f60;
+          border: none;
+          border-radius: 3vh;
+          padding: 1.5vh 5.5vh;
           font-size: 2.5vh;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          margin-top: 1.5vh;
+          font-weight: bold;
         }
- 
-        .domain-card {
-          width: 13vw;
-          height: 27vh;
-          margin-top: 15vh;
+
+        button:hover {
+          background-color: #2980b9;
+          color: white;
         }
- 
-        .domain-card i {
-          font-size: 5vh;
-          margin-bottom: 1rem;
-          position: absolute;
-          top: 4vh; /* Position at the top */
-          transition: transform 0.3s ease, color 0.3s ease;
-          animation: moveRight 5s infinite linear; /* Continuous animation */
-          padding: 0 20px;
+
+        .gif img {
+          height: 75vh; /* Adjust the gif size */
         }
       }
     </style>
   </head>
-
   <body>
-    <!-- Navbar -->
-    <div class="navbar">
-      <h2>Punch Point</h2>
-      <img src="./static/images/LTEH Logo.png" alt="Logo" class="logo" />
-    </div>
-    <div class="user-name">
-      <img src="./static/images/userlogo.png" alt="" class="user-logo" />
-      <h4 class="login-user" style="text-align: center">Hi, {{userName}} !</h4>
-    </div>
-    <!-- Main Content -->
-    <div class="container">
-      <!-- Domain Selection Cards -->
-      <div class="domain-container">
-        <!-- Logistics Card -->
-        <div class="domain-card" onclick="redirectToClassifier()">
-          <!-- <i class="fa-solid fa-truck"></i> -->
-          <i class="fa-solid fa-sitemap"></i>
-          <h3>AI Classifier</h3>
+    <div class="outer-container">
+      <div class="container">
+        <div class="content">
+          <img src="./static/images/LTEH Logo.png" alt="Logo" class="logo" />
+          <h2>PunchPoint Monitoring System</h2>
           <p>
-            Get Real-Time Punch Point Classifications – Powered by AI-Driven Insights
+            Leverage AI for real-time punch point classification <br />
+            & <br />
+            AI-Powered Query Assistance
           </p>
+
+          <div class="btn-container">
+            <a href="./login"><button>Login</button></a>
+          </div>
         </div>
 
-        <div class="domain-card" onclick="redirectToNextPage()">
-          <!-- <i class="fa-solid fa-truck"></i> -->
-          <i class="fa-solid fa-robot"></i>
-          <h3>AI ChatBot</h3>
-          <p>
-            Get Instant Answers to Your Punch Point related Questions – Powered
-            by Our Knowledge Database
-          </p>
+        <div class="gif">
+          <img src="./static/images/bg.gif" alt="Background GIF" />
         </div>
-
-        <!-- Add other domain cards here as needed -->
       </div>
     </div>
-    <!-- Footer -->
+
+    <!-- Footer section -->
     <footer>© Developed by LTEH - Digital Team for internal use</footer>
-
-    <script>
-      // Function to redirect to the chat page based on the domain selected
-      //// function loadData(datasetName) {
-      //  localStorage.setItem("dataset", datasetName); // Store dataset name
-      //  window.location.href = "./domainChatPage"; // Customize this URL based on the domain selected
-      //  }
-
-      function redirectToNextPage() {
-        // Redirect to the chat page
-        window.location.href = "./domainChatPage"; // Adjust URL as needed
-
-        // Store the dataset name in localStorage so it can be accessed on the next page
-        localStorage.setItem("dataset", datasetName);
-
-        // Set a loading state in localStorage
-        localStorage.setItem("loading", "true");
-      }
-
-      function redirectToClassifier() {
-        // Redirect to the chat page
-        window.location.href = "./AIClassifier";
-      }
-    </script>
   </body>
 </html>
